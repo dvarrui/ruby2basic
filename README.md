@@ -12,6 +12,7 @@ Este es un proyecto que hago sólo por diversión para generar programas BASIC p
 ## Instalación
 
 * Instalar Ruby.
+* Se requiren los siguientes paquetes: `gcc`, `make` y `ruby-dev` para compilar el parser.
 * Instalar la gema `gem install ruby2basic`
 
 ## Usage
