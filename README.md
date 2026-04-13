@@ -29,8 +29,8 @@ end
 
 * Aplicar el traductor:
 
-```bash
-$ ./ruby2basic.rb examples/03-bucle.rb 
+```ruby
+$ ./ruby2basic examples/03-bucle.rb 
 
 10 REM Bucle
 20 LET text$ = "I love 80s retro style!"
