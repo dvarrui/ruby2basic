@@ -43,13 +43,49 @@ $ ./ruby2basic examples/03-bucle.rb
 
 > Más [ejemplos](./examples/)
 
+También se puede invocar a modo de biblioteca. 
+
+```ruby
+require "ruby2basic"
+
+source = <<-CODE
+  puts "Hello, World!"
+CODE
+
+r2b = Ruby2Basic::ZXSpectrum.new(source)
+puts r2b.transpile
+
+#=> 10 PRINT "Hello, World!"
+#=> 20 STOP
+```
+
 ## Features
 
-* Lee la estructura secuencial.
-* Los comentarios a `REM`.
-* Definir variables `String` e `Integer`.
-* Método `puts` a `PRINT`. Se aceptan los String embebidos.
+Ruby:
+
+* Lińeas de comentarios.
+* Estructura secuencial.
+* Variables con tipo `String` e `Integer`.
+* Método `puts`. Se aceptan los String embebidos.
+* Estructura repetitiva.
 * Método `times` a `FOR`.
+* Estructura condicional.
+
+BASIC ZX Spectrum:
+
+* REM: Líneas de comentarios.
+* LET: Asigna valores a variables.
+* PRINT: Muestra texto o números en pantalla.
+* STOP: Detiene la ejecución (vital para separar el cuerpo principal de las subrutinas).
+
+* FOR: Inicia un bucle con una variable de control.
+* TO: Define el límite superior del bucle FOR.
+* NEXT: Cierra el bucle FOR.
+* IF: Evalúa una condición lógica.
+* THEN: Indica la acción a seguir si el IF es verdadero.
+* GOTO: Salto incondicional a una línea específica.
+
+* STR$: Convierte un número en una cadena de texto.
 
 ## Contributing
 

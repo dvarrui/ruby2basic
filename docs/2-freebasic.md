@@ -147,3 +147,49 @@ Next
 ErrorFatal:
 Print "Algo salio muy mal. Cerrando..."
 ```
+
+# TODO
+
+En FreeBASIC
+
+Usamos una función limpia y tipos de datos protegidos para evitar que el número se "desborde".
+Fragmento de código
+
+Function FactorialIter(n As Integer) As ULongInt
+    Dim res As ULongInt = 1
+    For i As Integer = 1 To n
+        res *= i
+    Next
+    Return res
+End Function
+
+Print "Factorial de 10 (Iterativo):"; FactorialIter(10)
+
+3. Factorial Recursivo
+
+
+En FreeBASIC (Estilo Moderno)
+Fragmento de código
+
+Cls
+Print "Hola Mundo desde FreeBASIC"
+Sleep ' Espera a que pulses una tecla
+
+
+
+En FreeBASIC (Recursividad Real)
+
+FreeBASIC maneja la memoria de forma automática, permitiendo que la función se llame a sí misma elegantemente.
+Fragmento de código
+
+Function FactorialRec(n As Integer) As ULongInt
+    If n <= 1 Then 
+        Return 1
+    Else
+        Return n * FactorialRec(n - 1)
+    End If
+End Function
+
+Print "Factorial de 5 (Recursivo):"; FactorialRec(5)
+Sleep
+

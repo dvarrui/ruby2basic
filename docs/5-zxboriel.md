@@ -282,14 +282,6 @@ La mayoría de los programadores que usan Boriel en openSUSE prefieren las minú
     Diferenciación: Muchos usan mayúsculas para sus propias variables y minúsculas para los comandos del sistema (o al revés) para distinguir rápido qué es qué.
 ---
 
-3. Ejemplo comparativo
-
-Estilo "Retro" (Gritando):
-Fragmento de código
-
-10 BORDER 1: PAPER 7: INK 0: CLS
-20 LET X = 10
-30 PRINT AT 10, X; "HOLA"
 
 Estilo "Boriel" (Moderno y limpio):
 Fragmento de código
@@ -316,6 +308,8 @@ Si usas un editor como Kate o VSCodium en openSUSE, el resaltado de sintaxis (co
 Zxboriel. Hola mundo y factorial iterativo y factorial recursivo
 
 ¡Excelente! Vamos a ver estos tres ejemplos en ZXBasic (Boriel). Notarás que el factorial recursivo es donde Boriel realmente brilla frente al BASIC antiguo, ya que el Spectrum original no permitía recursividad real de forma sencilla.
+
+---
 
 Aquí tienes el código en formato moderno (minúsculas y sin números de línea).
 1. Hola Mundo
@@ -356,6 +350,7 @@ dim n as ubyte = 5
 print "Factorial Iterativo de "; n; " es:"
 print factorial_iter(n)
 
+---
 3. Factorial Recursivo
 
 Boriel permite que una función se llame a sí misma. Nota importante: La recursividad en el Spectrum es lenta y puede agotar la memoria si el número es muy grande, pero para aprender la lógica es perfecta.
@@ -381,86 +376,3 @@ Cosas clave que debes saber:
     ubyte para el contador: Como el Spectrum tiene poca memoria y un procesador de 8 bits, usar ubyte (0-255) para la variable n e i hace que el programa sea mucho más rápido que si usaras integer.
 
     Indentación: Fíjate que he usado espacios para "meter hacia adentro" el código de los if y for. A Boriel no le importa, pero a tus ojos sí (hace el código mucho más profesional).
-
-¿Cómo probarlo todo junto?
-
-Puedes copiar los tres bloques en un solo archivo .bas, añadir un pause 0 al final para que la pantalla no se cierre, y usar el script que creamos antes:
-./build.sh programa.bas
-
-¿Te gustaría que te explique cómo optimizar aún más el código usando fixed (punto fijo) o prefieres intentar hacer un programa que pida el número por teclado con input?
-
-Haz los ejemplos con pcbasic y freebasic
-
-Para cerrar el círculo, aquí tienes los tres ejemplos comparados en PC-BASIC (el estilo de 1985 con números de línea) y FreeBASIC (el estilo moderno de 32/64 bits).
-
-Notarás que la mayor diferencia es cómo manejamos la recursividad, ya que el BASIC antiguo no la soportaba de forma nativa.
-1. Hola Mundo
-En PC-BASIC (Estilo GW-BASIC)
-Basic
-
-10 CLS
-20 PRINT "HOLA MUNDO DESDE PC-BASIC"
-30 END
-
-En FreeBASIC (Estilo Moderno)
-Fragmento de código
-
-Cls
-Print "Hola Mundo desde FreeBASIC"
-Sleep ' Espera a que pulses una tecla
-
-2. Factorial Iterativo (Bucle FOR)
-En PC-BASIC
-
-Aquí usamos una variable global F para el resultado y N para el número.
-Basic
-
-10 CLS
-20 INPUT "Introduce un numero: ", N
-30 F = 1
-40 FOR I = 1 TO N
-50 F = F * I
-60 NEXT I
-70 PRINT "El factorial es:"; F
-80 END
-
-En FreeBASIC
-
-Usamos una función limpia y tipos de datos protegidos para evitar que el número se "desborde".
-Fragmento de código
-
-Function FactorialIter(n As Integer) As ULongInt
-    Dim res As ULongInt = 1
-    For i As Integer = 1 To n
-        res *= i
-    Next
-    Return res
-End Function
-
-Print "Factorial de 10 (Iterativo):"; FactorialIter(10)
-
-3. Factorial Recursivo
-
-Aquí es donde está el gran cambio tecnológico.
-En PC-BASIC (Simulación con GOSUB)
-
-PC-BASIC no permite que una función se llame a sí misma. Para simularlo, los programadores antiguos usaban una "pila" manual o, más comúnmente, simplemente no lo hacían porque el GOSUB no crea variables nuevas cada vez.
-
-    Nota: En PC-BASIC es mejor quedarse con la versión iterativa. Intentar hacer recursividad real requiere trucos muy complejos con POKE y PEEK.
-
-En FreeBASIC (Recursividad Real)
-
-FreeBASIC maneja la memoria de forma automática, permitiendo que la función se llame a sí misma elegantemente.
-Fragmento de código
-
-Function FactorialRec(n As Integer) As ULongInt
-    If n <= 1 Then 
-        Return 1
-    Else
-        Return n * FactorialRec(n - 1)
-    End If
-End Function
-
-Print "Factorial de 5 (Recursivo):"; FactorialRec(5)
-Sleep
-

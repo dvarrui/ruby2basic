@@ -67,3 +67,48 @@ Ejemplo:
 ```
 
 > **NOTA**: Para acceder a los archivos del sistema Linux, ejecutar como: `pcbasic --mount=C:/home/username/mis_programas`
+
+---
+# TODO
+
+3. Ejemplo comparativo
+
+Estilo "Retro" (Gritando):
+Fragmento de código
+
+10 BORDER 1: PAPER 7: INK 0: CLS
+20 LET X = 10
+30 PRINT AT 10, X; "HOLA"
+
+
+Notarás que la mayor diferencia es cómo manejamos la recursividad, ya que el BASIC antiguo no la soportaba de forma nativa.
+1. Hola Mundo
+En PC-BASIC (Estilo GW-BASIC)
+Basic
+
+10 CLS
+20 PRINT "HOLA MUNDO DESDE PC-BASIC"
+30 END
+
+
+2. Factorial Iterativo (Bucle FOR)
+En PC-BASIC
+
+Aquí usamos una variable global F para el resultado y N para el número.
+Basic
+
+10 CLS
+20 INPUT "Introduce un numero: ", N
+30 F = 1
+40 FOR I = 1 TO N
+50 F = F * I
+60 NEXT I
+70 PRINT "El factorial es:"; F
+80 END
+
+Aquí es donde está el gran cambio tecnológico.
+En PC-BASIC (Simulación con GOSUB)
+
+PC-BASIC no permite que una función se llame a sí misma. Para simularlo, los programadores antiguos usaban una "pila" manual o, más comúnmente, simplemente no lo hacían porque el GOSUB no crea variables nuevas cada vez.
+
+    Nota: En PC-BASIC es mejor quedarse con la versión iterativa. Intentar hacer recursividad real requiere trucos muy complejos con POKE y PEEK.
