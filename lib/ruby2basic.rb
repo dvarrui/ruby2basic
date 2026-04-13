@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
 require_relative "ruby2basic/version"
+require_relative "ruby2basic/zxspectrum"
 
-module Ruby2basic
-  class Error < StandardError; end
-  # Your code goes here...
-end
