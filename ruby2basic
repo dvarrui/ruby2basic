@@ -3,8 +3,8 @@ require_relative "lib/ruby2basic"
 
 if ARGV[0]
   source = File.read(ARGV[0])
-  transpiler = Ruby2Basic::ZXSpectrum.new(source)
-  puts transpiler.transpile
+  transpiler = Ruby2Basic::ZXSpectrum.new
+  puts transpiler.transpile(source)
 else
   puts "Uso: ruby #{$0} FILENAME.rb"
 end
