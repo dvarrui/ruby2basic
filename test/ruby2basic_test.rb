@@ -2,14 +2,10 @@
 
 require "test_helper"
 
-class Ruby2basicTest < Test::Unit::TestCase
+class Ruby2BasicTest < Test::Unit::TestCase
   test "VERSION" do
     assert do
-      ::Ruby2basic.const_defined?(:VERSION)
+      ::Ruby2Basic.const_defined?(:VERSION)
     end
-  end
-
-  test "something useful" do
-    assert_equal("expected", "actual")
   end
 end
