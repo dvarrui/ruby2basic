@@ -3,8 +3,10 @@ require "prism"
 
 module Ruby2Basic
   class ZXSpectrum
-    def initialize(oneline: false)
-      @oneline = oneline
+    attr_accessor :oneline
+
+    def initialize
+      @oneline = false
       @lines = []
       @line_num = 10
       @subs = []

@@ -4,7 +4,8 @@ require "test_helper"
 
 class TranspilerZXSpectrumTest < Test::Unit::TestCase
   def setup
-    @r2b = Ruby2Basic::ZXSpectrum.new(oneline: true)
+    @r2b = Ruby2Basic::ZXSpectrum.new
+    @r2b.oneline = true
   end
 
   test "REM" do
