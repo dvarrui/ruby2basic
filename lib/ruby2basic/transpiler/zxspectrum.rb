@@ -143,7 +143,7 @@ module Ruby2Basic
           left = resolve(node.receiver)
           right = resolve(node.arguments.arguments.first)
           op = node.name.to_s == "==" ? "=" : node.name.to_s
-          "#{left}#{op}#{right}"
+          "#{left} #{op} #{right}"
         else
           node.name.to_s
         end

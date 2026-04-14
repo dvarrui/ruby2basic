@@ -1,8 +1,8 @@
-# Hello Word!
+# Hello Starwars!
 
 name = "Obiwan"
 age = 55
 
-puts "¡Que la fuerza te acompañe!"
-puts "- Nombre : " + name + "!"
-puts "- Edad   : #{age}"
+puts "¡Hola Starwars!"
+puts "Me llamo " + name + "."
+puts "Tengo #{age} años."
