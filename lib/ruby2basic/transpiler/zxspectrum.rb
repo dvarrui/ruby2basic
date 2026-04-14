@@ -16,16 +16,19 @@ module Ruby2Basic
       @string_vars = []
     end
   
-    def transpile
+    def transpile(oneline: false)
       return "Error de sintaxis" unless @result.success?
       process_nodes(@result.value.statements.body)
   
       output = []
       @arrays.each { |dim| output << "#{@line_num} #{dim}"; @line_num += 10 }
       output += @lines
-      output << "#{@line_num} STOP"
-      @line_num += 10
-      output += @subs
+
+      unless oneline
+        output << "#{@line_num} STOP"
+        @line_num += 10
+        output += @subs
+      end
       output.join("\n")
     end
   
