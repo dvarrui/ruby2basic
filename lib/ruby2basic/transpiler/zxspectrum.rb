@@ -3,7 +3,8 @@ require "prism"
 
 module Ruby2Basic
   class ZXSpectrum
-    def initialize(code)
+    def initialize(code, oneline: false)
+      @oneline = oneline
       @result = Prism.parse(code)
       @comments = @result.comments.map do |c| 
         { line: c.location.start_line, text: c.location.slice.gsub(/^#\s*/, "") }
@@ -16,7 +17,7 @@ module Ruby2Basic
       @string_vars = []
     end
   
-    def transpile(oneline: false)
+    def transpile
       return "Error de sintaxis" unless @result.success?
       process_nodes(@result.value.statements.body)
   
@@ -24,7 +25,7 @@ module Ruby2Basic
       @arrays.each { |dim| output << "#{@line_num} #{dim}"; @line_num += 10 }
       output += @lines
 
-      unless oneline
+      unless @oneline
         output << "#{@line_num} STOP"
         @line_num += 10
         output += @subs
