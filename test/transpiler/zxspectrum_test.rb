@@ -15,13 +15,20 @@ class TranspilerZXSpectrumTest < Test::Unit::TestCase
     assert_equal(output, @r2b.transpile(input))
   end
 
+  test "LET" do
+    input = 'name="Obiwan"'
+    output = '10 LET name$ = "Obiwan"'
+    assert_equal(output, @r2b.transpile(input))
+
+    input = 'age=55'
+    output = '10 LET age = 55'
+    assert_equal(output, @r2b.transpile(input))
+  end
+
   test "PRINT" do
     input = 'puts "Hello World!"'
     output = '10 PRINT "Hello World!"'
-
     assert_equal(output, @r2b.transpile(input))
-    @r2b.reset
-    @r2b.oneline = true
 
     input = 'puts "Hello, #{name}!"'
     output = '10 PRINT "Hello, " + STR$(name) + "!"'

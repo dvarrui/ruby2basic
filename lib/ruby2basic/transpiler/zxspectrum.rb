@@ -6,11 +6,10 @@ module Ruby2Basic
     attr_accessor :oneline
 
     def initialize
-      reset
+      @oneline = false
     end
   
     def reset
-      @oneline = false
       @lines = []
       @line_num = 10
       @subs = []
@@ -20,6 +19,7 @@ module Ruby2Basic
     end
 
     def transpile(code)
+      reset
       @result = Prism.parse(code)
       @comments = @result.comments.map do |c| 
         { line: c.location.start_line, text: c.location.slice.gsub(/^#\s*/, "") }
@@ -60,7 +60,6 @@ module Ruby2Basic
     def check_for_comments(current_node_line, to_subs)
       while @comments.any? && @comments.first[:line] <= current_node_line
         comment = @comments.shift
-        # REM se queda en mayúsculas, pero el texto del comentario se respeta
         add_basic("REM", comment[:text], to_subs: to_subs)
       end
     end
