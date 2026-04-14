@@ -20,5 +20,11 @@ class TranspilerZXSpectrumTest < Test::Unit::TestCase
     output = '10 PRINT "Hello World!"'
 
     assert_equal(output, @r2b.transpile(input))
+    @r2b.reset
+    @r2b.oneline = true
+
+    input = 'puts "Hello, #{name}!"'
+    output = '10 PRINT "Hello, " + STR$(name) + "!"'
+    assert_equal(output, @r2b.transpile(input))
   end
 end

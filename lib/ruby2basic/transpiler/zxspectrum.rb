@@ -6,6 +6,10 @@ module Ruby2Basic
     attr_accessor :oneline
 
     def initialize
+      reset
+    end
+  
+    def reset
       @oneline = false
       @lines = []
       @line_num = 10
@@ -14,7 +18,7 @@ module Ruby2Basic
       @arrays = []
       @string_vars = []
     end
-  
+
     def transpile(code)
       @result = Prism.parse(code)
       @comments = @result.comments.map do |c| 
@@ -124,7 +128,6 @@ module Ruby2Basic
             inner = part.statements.body.first
             res = resolve(inner)
             var_name = inner.respond_to?(:name) ? inner.name.to_s : nil
-            
             if !inner.is_a?(Prism::StringNode) && !@string_vars.include?(var_name)
               "STR$(#{res})"
             else
@@ -134,7 +137,7 @@ module Ruby2Basic
             resolve(part)
           end
         end
-        parts.join("+")
+        parts.join(" + ")
   
       when Prism::CallNode
         if node.receiver && node.arguments && node.arguments.arguments.size == 1
