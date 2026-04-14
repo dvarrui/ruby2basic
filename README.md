@@ -1,5 +1,5 @@
 
-# Ruby2Basic::ZXSpectrum
+# Ruby2Basic
 
 ```
 Traducir scripts Ruby a programas BASIC del ZX Spectrum
@@ -16,6 +16,8 @@ Este es un proyecto que hago sólo por diversión para generar programas BASIC p
 * Instalar la gema `gem install ruby2basic`
 
 ## Usage
+
+**Usar en modo comando (CLI)**
 
 * Crear un programa en Ruby:
 
@@ -43,7 +45,9 @@ $ ./ruby2basic examples/03-bucle.rb
 
 > Más [ejemplos](./examples/)
 
-También se puede invocar a modo de biblioteca. 
+**Usar en modo biblioteca**
+
+* Importamos la gema `ruby2basic`.
 
 ```ruby
 require "ruby2basic"
@@ -51,7 +55,11 @@ require "ruby2basic"
 source = <<-CODE
   puts "Hello, World!"
 CODE
+```
 
+* Transpilamos con la clase `Ruby2Basic::ZXSpectrum::Tranpiler`.
+
+```ruby
 r2b = Ruby2Basic::ZXSpectrum::Transpiler.new
 puts r2b.call(source)
 

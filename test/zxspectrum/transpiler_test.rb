@@ -15,11 +15,13 @@ class ZXSpectrumTranspilerTest < Test::Unit::TestCase
     assert_equal(output, @r2b.call(input))
   end
 
-  test "LET" do
+  test "LET String" do
     input = 'name="Obiwan"'
     output = '10 LET name$ = "Obiwan"'
     assert_equal(output, @r2b.call(input))
+  end
 
+  test "LET Integer" do
     input = 'age=55'
     output = '10 LET age = 55'
     assert_equal(output, @r2b.call(input))
