@@ -2,9 +2,9 @@
 
 require "test_helper"
 
-class TranspilerZXSpectrumTest < Test::Unit::TestCase
+class ZXSpectrumTranspilerTest < Test::Unit::TestCase
   def setup
-    @r2b = Ruby2Basic::ZXSpectrum.new
+    @r2b = Ruby2Basic::ZXSpectrum::Transpiler.new
     @r2b.oneline = true
   end
 
@@ -12,17 +12,17 @@ class TranspilerZXSpectrumTest < Test::Unit::TestCase
     input = "# Comentario"
     output = "10 REM Comentario"
 
-    assert_equal(output, @r2b.transpile(input))
+    assert_equal(output, @r2b.call(input))
   end
 
   test "LET" do
     input = 'name="Obiwan"'
     output = '10 LET name$ = "Obiwan"'
-    assert_equal(output, @r2b.transpile(input))
+    assert_equal(output, @r2b.call(input))
 
     input = 'age=55'
     output = '10 LET age = 55'
-    assert_equal(output, @r2b.transpile(input))
+    assert_equal(output, @r2b.call(input))
   end
 
   # test "DIM" do
@@ -35,14 +35,14 @@ class TranspilerZXSpectrumTest < Test::Unit::TestCase
   test "PRINT" do
     input = 'puts "Hello World!"'
     output = '10 PRINT "Hello World!"'
-    assert_equal(output, @r2b.transpile(input))
+    assert_equal(output, @r2b.call(input))
 
     input = 'puts "Age: #{age}."'
     output = '10 PRINT "Age: " + STR$(age) + "."'
-    assert_equal(output, @r2b.transpile(input))
+    assert_equal(output, @r2b.call(input))
 
     input = 'puts "Hello, #{name}!"'
     output = '10 PRINT "Hello, " + STR$(name) + "!"'
-    assert_equal(output, @r2b.transpile(input))
+    assert_equal(output, @r2b.call(input))
   end
 end

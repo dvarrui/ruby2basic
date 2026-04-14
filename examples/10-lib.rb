@@ -5,6 +5,5 @@ source = <<-CODE
   puts "Hello, World!"
 CODE
 
-r2b = Ruby2Basic::ZXSpectrum.new
-r2b.oneline = true
-puts r2b.transpile(source)
+r2b = Ruby2Basic::ZXSpectrum::Transpiler.new
+puts r2b.call(source)
