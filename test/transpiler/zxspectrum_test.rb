@@ -25,6 +25,13 @@ class TranspilerZXSpectrumTest < Test::Unit::TestCase
     assert_equal(output, @r2b.transpile(input))
   end
 
+  # test "DIM" do
+  #   skip
+  #   input = 'jedis = ["Yoda", "Obiwan", "Luke"]'
+  #   output = '10 DIM jedis(3)'
+  #   assert_equal(output, @r2b.transpile(input))
+  # end
+
   test "PRINT" do
     input = 'puts "Hello World!"'
     output = '10 PRINT "Hello World!"'
