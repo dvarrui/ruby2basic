@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class ZXSpectrumTranspilerTest < Test::Unit::TestCase
+class ZXSpectrumSequenceTest < Test::Unit::TestCase
   def setup
     @r2b = Ruby2Basic::ZXSpectrum::Transpiler.new
     @r2b.oneline = true

@@ -7,14 +7,15 @@ class ZXSpectrumExamplesTest < Test::Unit::TestCase
     @r2b = Ruby2Basic::ZXSpectrum::Transpiler.new
   end
 
-  test "example 1" do
-    filein = File.join("examples", "01-hello.rb")
-    fileout = File.join("examples", "01-hello.bas")
-    input = File.read(filein)
-    output = File.read(fileout)
-    puts input
-    puts output
+  test "examples" do
+    rbfiles = Dir.glob("examples/*.rb")
+    rbfiles.each do |rbfile|
+      basfile = rbfile[0..-4] + ".bas"
+      next unless File.exist?(basfile)
 
-    assert_equal(output, @r2b.call(input))
+      input = File.read(rbfile)
+      output = File.read(basfile)  
+      assert_equal(output, @r2b.call(input))
+      end
   end
 end
