@@ -3,11 +3,14 @@
 require "test_helper"
 
 class TranspilerZXSpectrumTest < Test::Unit::TestCase
-  test "REM" do
-  input = "# Comentario"
-    output = "10 REM Comentario"
-    r2b = Ruby2Basic::ZXSpectrum.new(input, oneline: true)
+  def setup
+    @r2b = Ruby2Basic::ZXSpectrum.new(oneline: true)
+  end
 
-    assert_equal(output, r2b.transpile)
+  test "REM" do
+    input = "# Comentario"
+    output = "10 REM Comentario"
+
+    assert_equal(output, @r2b.transpile(input))
   end
 end
